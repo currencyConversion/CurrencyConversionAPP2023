@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="Styles.css">
+
+    <title>Login Form</title>
+</head>
+<body>
+
+<div class="banner">
+    <h1>CurrencyHub</h1>
+</div>
+<div class="banner">
+    <h1>CurrencyHub</h1>
+
+    <nav><a href="Mainpage.html">Home</a>  <a href="Account.html">Account</a> <a href="About.html">About us</a>  <a href="Login.html">Logout</a></nav>
+</div>
+<div class="reg-container">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Add Money</h3>
+        </div>
+        <div class="panel-body">
+            <h4>How much would you like to add?</h4>
+            <form role="form">
+                <div class="form-group">
+                    <select class="from-currency" name="from-currency">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <!-- Add more currency options here -->
+                    </select>
+                    <input type="number" name="amount" id="amount" class="amount" placeholder="Please Enter">
+                </div>
+
+
+
+            </form>
+
+            <div class="panel-body">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" name="cardholder_name" id="cardholder_name" class="cardholder" placeholder="Cardholder Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="card_number" id="card_number" class="card-number" placeholder="Card Number">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="expiration_date" id="expiration_date" class="expiration-date" placeholder="Expiration Date (MM/YY)">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="cvv" id="cvv" class="cvv" placeholder="CVV">
+                    </div>
+                    <input type="submit" id="Proceed" value="Submit Payment" class="login">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
+
