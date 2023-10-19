@@ -1,0 +1,32 @@
+doctype html
+head
+link(rel='stylesheet' type='text/css' href='Styles.css')
+title Account
+.banner
+h1 CurrencyHub
+nav
+a(href='Mainpage.html') Home
+a(href='Account.html') Account
+a(href='About.html') About us
+a(href='Login.html') Logout
+.reg-container
+.panel
+.panel-heading
+h3.panel-title
+| Please sign up for CurrencyHub
+small It&apos;s free!
+.panel-body
+form(role='form')
+.form-group
+input#first_name.fName(type='text' name='first_name' placeholder='First Name')
+.form-group
+input#last_name.lName(type='text' name='last_name' placeholder='Last Name')
+.form-group
+input#email.email(type='email' name='email' placeholder='Email Address')
+.form-group
+input#mobile.mobile(type='number' name='mobile' placeholder='Mobile Number')
+.form-group
+input#password.password(type='password' name='password' placeholder='Password')
+input.UpdateAccount(type='submit' value='Update Account')
+input.CloseAccount(type='submit' value='Close Account')
+

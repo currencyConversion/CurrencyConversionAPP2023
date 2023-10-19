@@ -1,0 +1,56 @@
+doctype html
+head
+    link(rel='stylesheet', href='/css/Styles.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    title Currency App Home
+.banner
+    h1 CurrencyHub
+    nav
+        a(href='MainPage.pug') Home
+        a(href='Account.pug') Account
+        a(href='About.html') About us
+        a(href='Login.html') Logout
+.container
+    .panel
+        .panel-heading
+            h1.panel-title Wallet
+        h1 Welcome Username
+        .panel-body
+            // Current Balance
+            .balance
+                h1 Your Current Balance
+                .wallet-balance
+                    select.from-currency(name='from-currency')
+                        option(value='USD') USD
+                        option(value='EUR') EUR
+                        option(value='GBP') GBP
+                        // Add more currency options here
+                    h1#balanceAmount.bal-amount $5,000.00
+            // Buttons
+            .buttons
+                button#Add.circle-button(type='submit' value='Add') +
+                button#Withdraw.circle-button(type='submit') -
+                button#Transfer.circle-button(type='submit') -&gt;
+    // Currency Exchange Section
+    .currency-exchange
+        .panel-heading
+            h1.panel-title Convert
+        .input-amount
+            label From Currency:
+            select.from-currency(name='from-currency')
+                option(value='USD') USD
+                option(value='EUR') EUR
+                option(value='GBP') GBP
+                // Add more currency options here
+            label(for='amount') Amount:
+            input#amount(type='number' name='amount' placeholder='Enter amount' step='0.01')
+        .receiving-amount
+            label(for='to-currency') To Currency:
+            select#to-currency(name='to-currency')
+                option(value='EUR') EUR
+                option(value='USD') USD
+                option(value='GBP') GBP
+                // Add more currency options here
+            input#receive(type='number' name='receive' placeholder='Receiving' step='0.01')
+        button(type='submit') Convert
+script(src='MainPageFuncs.js')
