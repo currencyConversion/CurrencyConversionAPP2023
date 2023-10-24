@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+    #page
+      a#top
+      .header
+        img(srcset="/images/GymPhoto.jpg 955w, /images/GymPhoto.jpg 1000w", sizes="(max-width: 500px) 600px, 700px", src="Images/Bed-image2.jpg", alt="Bed")
+        nav
+          h1
+            a(href='/') Home
+          h1
+            a(href="/register") Register
+          h1
+            a(href="/login") Login
+          h1
+            a(href="/users") Contact
+        .bigbox
+          h1.text Welcome to Pawel's Gym, Scroll down to see more

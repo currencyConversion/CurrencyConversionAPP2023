@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  article
+    .column
+      .row
+        .box
+         p=product.name
+         br
+         each review in product.reviews
+            p= review.author
+            br
+            p= review.reviewText
+        .box
+        .box
+      .row
+        .box 
+        .box 
+        .box
+    block append footer
+        include footer.pug

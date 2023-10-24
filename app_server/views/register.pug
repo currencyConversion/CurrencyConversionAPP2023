@@ -1,0 +1,41 @@
+extends layout 
+
+block content 
+  article 
+    .column
+    form(method="get", action="/login")
+        fieldset
+          legend.fontheader
+            p Register
+          br
+          br
+          label(for="forename")
+            p Forename:
+            input#forenameinput(type="text", name="forename")
+          br
+          br
+          label(for="surname")
+            p Surname:
+            input#surnameinput(type="text", name="surname")
+          br
+          br
+          label(for="phone")
+            p| Phone:
+            input#phoneinput(type="text", name="Phone")
+          br
+          br
+          label(for="email")
+            p Email:
+            input#emailinput(type="email", name="email")
+          br
+          br
+          label(for="phone")
+            p Phone:
+            input#phoneinput(type="text", name="phone")
+          br
+          br
+        fieldset.center
+          input#Sbutton(type="submit", value="Register")
+          input#Rbutton(type="reset", value="Reset Form")
+    block append footer
+                include footer.pug

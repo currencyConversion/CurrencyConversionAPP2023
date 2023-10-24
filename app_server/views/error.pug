@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  article
+    .column 
+      h1= message
+      h2= error.status
+      pre #{error.stack}
+    block append footer
+                include footer.pug
+

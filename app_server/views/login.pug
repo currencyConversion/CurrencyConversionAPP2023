@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    article 
+        .column
+            form(method='get' action='/homepage')
+                p Please enter your login credentials!
+                p Email: 
+                input(type='text' name='cemail' value='')
+                p Password: 
+                input(type='password' name='cpassword' value='')
+                br
+                br
+                br
+                input#Sbutton(type='Submit' name='submitdetails' value='Submit')
+                br
+                br
+                input#Rbutton(type="reset", value="Reset Form")
+                br
+                br
+                br
+            block append footer
+                include footer.pug
