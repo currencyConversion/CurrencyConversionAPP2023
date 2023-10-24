@@ -3,19 +3,19 @@ extends layout
 block content
   article
     .column
+      h1 Shopping
       .row
-        .box
-         p=product.name
-         br
-         each review in product.reviews
-            p= review.author
+        each products in product
+          .box
+            p=products.name
+            a(href='/product/' + products.id)
+              img.small-image(src=products.image, alt=products.name)
             br
-            p= review.reviewText
-        .box
-        .box
       .row
-        .box 
-        .box 
-        .box
+        each products in product
+           .box    
+            each feature in products.features
+              p= feature
+            br
     block append footer
-        include footer.pug
+      include footer.pug

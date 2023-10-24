@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  article
+    .column
+      h1 Product Details
+      .row
+        .box
+          h2= product.name
+          img.small-image(src=product.image, alt=product.name)
+          p Rating: #{product.rating}
+      .row
+        .box
+    block append footer
+      include footer.pug
