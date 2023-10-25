@@ -1,14 +1,14 @@
 /* GET home page */
 const index = function(req, res){
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Index' });
 };
 
 const register = function(req, res, next) {
-  res.render('register', { title: 'Express' });
+  res.render('register', { title: 'Register' });
 };
 
 const login = function(req, res, next) {
-  res.render('login', { title: 'Express' });
+  res.render('login', { title: 'Login' });
 };
 
 const homepage = function(req, res) {
@@ -65,11 +65,11 @@ const products = [
   },
   {
     id: 3,
-    name: 'Tren',
+    name: 'Creatine',
     image: '/images/creatine.jpg',
     rating: 4,
     price: 299.99,
-    features: ['Juicy', 'Big Quickly', 'Small Testes'],
+    features: ['White', 'Powder or Pills', 'Supplement'],
     reviews: [
       {
         author: 'Conor Dawson',
