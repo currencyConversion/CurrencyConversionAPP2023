@@ -104,15 +104,20 @@ article {
 	display:flex;
     flex-direction: row;
 	justify-content: space-evenly;
-	margin-top: 2%;
 }
 
 
 .column {
 	display:flex;
 	flex-direction: column;
-	margin-top: 5%;
 	margin-bottom: 5%;
+}
+
+.tightcolumn {
+	display:flex;
+	flex-direction: column;
+	width:40%;
+	text-align: center;
 }
 
 .smallcolumn {
@@ -129,9 +134,11 @@ article {
 }
 
 input {
-	width: 60%;
+	width: 40%;
 	height: 40px;
 }
+
+
 
 footer {
     position:relative;
@@ -166,6 +173,7 @@ form > input {
 	color: black;
 	height:300px;
 	width:500px;
+	margin-top: 2%;
 }
 
 .box > p

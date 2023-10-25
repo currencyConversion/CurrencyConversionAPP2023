@@ -21,63 +21,77 @@ const homepage = function(req, res) {
       context: 'Review of the products',
       callToAction: 'Please leave a review'
     },
-    product: [{
-      id: 1,
-      name: 'Protein Powder',
-      image: '/images/proteinpowder.jpg',
-      rating: 3,
-      features: ['Powder','White','Protein'],
-      reviews: [{
+    product: products
+})};
+
+const products = [
+  {
+    id: 1,
+    name: 'Protein Powder',
+    image: '/images/proteinpowder.jpg',
+    rating: 3,
+    price: 15.99,
+    features: ['Powder', 'White', 'Protein'],
+    reviews: [
+      {
         author: 'Conor Dawson',
         rating: 5,
-        timestamp: '16 july 2013',
+        timestamp: '16 July 2013',
         reviewText: 'Great product!'
-    }]
+      },
+      {
+        author: 'Conor Dawson',
+        rating: 5,
+        timestamp: '16 July 2013',
+        reviewText: 'Great product!'
+      }
+    ]
   },
   {
-      id: 2,
-      name: 'Protein Bar',
-      image: '/images/proteinbar.jpg',
-      rating: 4,
-      features: ['Natural','Tasty','Protein'],
-      reviews: [{
+    id: 2,
+    name: 'Protein Bar',
+    image: '/images/proteinbar.jpg',
+    rating: 4,
+    price: 2.99,
+    features: ['Natural', 'Tasty', 'Protein'],
+    reviews: [
+      {
         author: 'Conor Dawson',
         rating: 5,
-        timestamp: '16 july 2013',
+        timestamp: '16 July 2013',
         reviewText: 'Great product!'
-    }]
-   },
-   {
+      }
+    ]
+  },
+  {
     id: 3,
     name: 'Tren',
     image: '/images/creatine.jpg',
     rating: 4,
-    features: ['juicy','Big Quickly','Small Testes'],
-    reviews: [{
-      author: 'Conor Dawson',
-      rating: 5,
-      timestamp: '16 july 2013',
-      reviewText: 'Great product!'
-  }]
- }]
-})};
+    price: 299.99,
+    features: ['Juicy', 'Big Quickly', 'Small Testes'],
+    reviews: [
+      {
+        author: 'Conor Dawson',
+        rating: 5,
+        timestamp: '16 July 2013',
+        reviewText: 'Great product!'
+      }
+    ]
+  }
+];
 
-const getProductById = (productId) => {
-  return products.find((product) => product.id === productId);
-};
 
-const productdetail = function(req, res, next){
+const productdetail = function(req, res, next) {
   const productId = req.params.id;
-  const product = getProductById(productId);
-  res.render('product-detail', { product });
+  const productA = products.find(products => products.id == productId);
+  res.render('product-detail', { productId, productA });
 };
-
 
 module.exports = {
   index,
   register,
   homepage,
   login,
-  productdetail,
-  getProductById
+  productdetail
 };

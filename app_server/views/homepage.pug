@@ -14,6 +14,7 @@ block content
       .row
         each products in product
            .box    
+            p € #{products.price}
             each feature in products.features
               p= feature
             br

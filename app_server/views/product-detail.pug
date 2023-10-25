@@ -3,13 +3,34 @@ extends layout
 block content
   article
     .column
-      h1 Product Details
-      .row
-        .box
-          h2= product.name
-          img.small-image(src=product.image, alt=product.name)
-          p Rating: #{product.rating}
-      .row
-        .box
+      .row 
+        .column
+          h1 Product Details
+          .box 
+            p= productA.name
+            img.small-image(src=productA.image, alt=productA.name)   
+          .box 
+            p Price: € #{productA.price}
+            p Rating: #{productA.rating}
+            p Details: #{productA.features}
+            a(href='/homepage') Back to Shop
+
+        .column
+          h1 Reviews
+          each review in productA.reviews
+            .box
+              p=review.author
+              p=review.rating 
+              p=review.timestamp 
+              p=review.reviewText
+              br
     block append footer
-      include footer.pug
+        include footer.pug
+
+
+
+
+
+
+
+
