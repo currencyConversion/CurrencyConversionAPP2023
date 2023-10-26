@@ -2,22 +2,43 @@ extends layout
 
 block content 
     article 
-        .column
-            form(method='get' action='/homepage')
-                p Please enter your login credentials!
-                p Email: 
-                input(type='text' name='cemail' value='')
-                p Password: 
-                input(type='password' name='cpassword' value='')
-                br
-                br
-                br
-                input#Sbutton(type='Submit' name='submitdetails' value='Submit')
-                br
-                br
-                input#Rbutton(type="reset", value="Reset Form")
-                br
-                br
-                br
+        .container
+            .d-flex.justify-content-center.h-100
+                .card
+                    .card-header
+                        h3 Sign In
+                        .d-flex.justify-content-end.social_icon
+                        span
+                            i.fab.fa-facebook-square
+                        span
+                            i.fab.fa-google-plus-square
+                        span
+                            i.fab.fa-twitter-square
+                    .card-body
+                        form(method="get" action="/homepage")
+                            .input-group.form-group
+                                .input-group-prepend
+                                span.input-group-text
+                                    i.fas.fa-user
+                                input.form-control(type='text' placeholder='username')
+                            .input-group.form-group
+                                .input-group-prepend
+                                span.input-group-text
+                                    i.fas.fa-key
+                                input.form-control(type='password' placeholder='password')
+                            .row.align-items-center.remember
+                                input(type='checkbox')
+                                | Remember Me
+                            .form-group
+                                input.btn.float-right.login_btn(type='submit' value='Login')
+                    .card-footer
+                        .d-flex.justify-content-center.links
+                            | Don&apos;t have an account?
+                            a(href='/register') Sign Up
+                        .d-flex.justify-content-center
+                            a(href='#') Forgot your password?
+                
+        br
+        br
         block append footer
                 include footer.pug
