@@ -1,44 +1,41 @@
 extends layout 
 
 block content 
-  article
-    .row
-      .bigcolumn
-        form(method="get", action="/login")
-          fieldset
-            legend.fontheader
-              p Register
-            br
-            br
-            label(for="forename")
-              p Forename:
-              input#forenameinput(type="text", name="forename")
-            br
-            br
-            label(for="surname")
-              p Surname:
-              input#surnameinput(type="text", name="surname")
-            br
-            br
-            label(for="phone")
-              p| Phone:
-              input#phoneinput(type="text", name="Phone")
-            br
-            br
-            label(for="email")
-              p Email:
-              input#emailinput(type="email", name="email")
-            br
-            br
-            label(for="phone")
-              p Phone:
-              input#phoneinput(type="text", name="phone")
-            br
-            br
-          fieldset.center
-            input#Sbutton(type="submit", value="Register")
-            br
-            br
-            input#Rbutton(type="reset", value="Reset Form")
-    block append footer
-      include footer.pug
+    article
+        .column
+            #login
+            h3.text-center.text-white.pt-5 Register form
+            .container
+              #login-row.row.justify-content-center.align-items-center
+                #login-column.col-md-6
+                  #login-box.col-md-12
+                    form#login-form.form(action='' method='post')
+                      h3.text-center.text-info Register
+                      .form-group
+                        label.text-info(for='username') Username:
+                        br
+                        input#username.form-control(type='text' name='username')                      
+                      .form-group
+                        label.text-info(for='email') Email:
+                        br
+                        input#email.form-control(type='text' name='email')
+                      .form-group
+                        label.text-info(for='password') Password:
+                        br
+                        input#password.form-control(type='text' name='password')
+                      .form-group
+                        label.text-info(for='conpassword') Confirm Password:
+                        br
+                        input#conpassword.form-control(type='text' name='conpassword')
+                      .form-group
+                        label.text-info(for='dateofbirth') Date of Birth:
+                        br
+                        input#dateofbirth.form-control(type='date' name='dateofbirth')
+                      .form-group
+                        label.text-info(for='remember-me') Remember me 
+                        input#remember-me(name='remember-me' type='checkbox')
+                        br
+                        input.btn.btn-info.btn-md(type='submit' name='submit' value='submit')
+            
+        footer.footer.bg-dark.text-light.text-center.py-3
+            | &copy; 2023 Currency Exchange
