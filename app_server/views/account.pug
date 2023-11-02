@@ -4,13 +4,13 @@ block content
     article
         .column
             #login
-            h3.text-center.text-white.pt-5 Register form
+            h3.text-center.text-white.pt-5 Update Details form
             .container
               #login-row.row.justify-content-center.align-items-center
                 #login-column.col-md-6
                   #login-box.col-md-12
-                    form#login-form.form(action='/register' method='post')
-                      h3.text-center.text-info Register
+                    form#login-form.form(action='/exchange' method='get')
+                      h3.text-center.text-info Update Details
                       .form-group
                         label.text-info(for='username') Username:
                         br
@@ -37,7 +37,10 @@ block content
                         input#dateofbirth.form-control(type='date' name='dateofbirth')
                       .form-group
                         br
-                        input.btn.btn-info.btn-md(type='submit' name='submit' value='submit')
+                        input.btn.btn-info.btn-md(type='submit' name='submit' value='Update Account')
+                        br
+                        br
+                        input.btn.btn-info.btn-md(type='submit' name='submit' value='Delete Account')
             
         footer.footer.bg-dark.text-light.text-center.py-3
             | &copy; 2023 Currency Exchange

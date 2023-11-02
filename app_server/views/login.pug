@@ -9,16 +9,16 @@ block content
               #login-row.row.justify-content-center.align-items-center
                 #login-column.col-md-6
                   #login-box.col-md-12
-                    form#login-form.form(action='' method='post')
+                    form#login-form.form(action='/login' method='post')
                       h3.text-center.text-info Login
                       .form-group
-                        label.text-info(for='email') email:
+                        label.text-info(for='username') Username:
                         br
-                        input#email.form-control(type='text' name='email')
+                        input#username.form-control(type='text' name='username')
                       .form-group
                         label.text-info(for='password') Password:
                         br
-                        input#password.form-control(type='text' name='password')
+                        input#password.form-control(type='password' name='password')
                       .form-group
                         label.text-info(for='remember-me') Remember me
                         input#remember-me(name='remember-me' type='checkbox')

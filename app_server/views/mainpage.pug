@@ -4,10 +4,56 @@ block content
     article
         .column
             .row
-                h1 Currency Exchange Preview
+                h1 Currency Exchange
             .row
+                .box
+                    h1 Wallet
+                    br
+                    h1 Welcome Username 
+                    h1 Your Current Balance
+                    br
+                    select.form-select(aria-label='Currencies') 
+                        option(selected='USD') USD
+                        option(value='EUR') EUR
+                        option(value='GBP') GBP
+                    label.text-info.left $6,500
+                    br
+                    br
+                    .row
+                        button#Add.circle-button.btn.btn-info.btn-md(type='submit' value='Add') +
+                        button#Withdraw.circle-button.btn.btn-info.btn-md(type='submit') -
+                        button#Transfer.circle-button.btn.btn-info.btn-md(type='submit') -&gt;
 
-            .row 
-            .row 
+                .box
+                    h1 Conversion
+                    br
+                    label.text-info From Currency:
+                    select.form-select(aria-label='Currencies')
+                        option(selected='USD') USD
+                        option(value='EUR') EUR
+                        option(value='GBP') GBP
+                    br
+                    br
+                    label.text-info Amount:
+                    input#amount(type='number' name='amount' placeholder='Enter amount' step='0.01')
+                    br
+                    br
+                    label.text-info To Currency:
+                    select.form-select(aria-label='Currencies')
+                        option(selected='USD') USD
+                        option(value='EUR') EUR
+                        option(value='GBP') GBP
+                    br
+                    br
+                    label.text-info Received Amount:
+                    input#receive(type='number' name='receive' placeholder='Receiving' step='0.01')
+                    br
+                    br
+                    button.btn.btn-info.btn-md(type='submit') Convert
+
+
+
+                    
+
         footer.footer.bg-dark.text-light.text-center.py-3
             | &copy; 2023 Currency Exchange 

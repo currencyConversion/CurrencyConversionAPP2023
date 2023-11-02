@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 // Connection string after cluster0 needs to be changed. Connection information is in Database section in MongoDB Atlas, top left on left nav bar.
 // Click on Cluster0, then shell from the following menu. The String is in there.
-const dbURI = "mongodb+srv://user1:pawel@cluster0.jvbl2fr.mongodb.net/GymDatabase?retryWrites=true&w=majority";
-
+const dbURI = "mongodb+srv://currencyconversion2023:12345@currencyconverterprojec.hhtduxa.mongodb.net/?retryWrites=true&w=majority";
 try {
    
 mongoose.connect(

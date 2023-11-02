@@ -17,12 +17,27 @@ body
           .navbar-header
             a.navbar-brand(href='/') Currency Exchange
           ul.nav.navbar-nav
-            li
-              a(href='/') Home
-            li
-              a(href='/Account') Account
-            li
-              a(href='/addmoney') Transfer Funds
+            if isLoggedIn === true
+              li.active
+                a(href='/mainpage') Home
+              li
+                a(href='/Account') Account
+              li
+                a(href='/aboutus') About Us
+            if account === true 
+              li
+                a(href='/mainpage') Home
+              li.active
+                a(href='/Account') Account
+              li
+                a(href='/aboutus') About Us
+            if about === true
+              li
+                a(href='/mainpage') Home
+              li
+                a(href='/Account') Account
+              li.active
+                a(href='/aboutus') About Us
           ul.nav.navbar-nav.navbar-right
             li
               a(href='/register')
