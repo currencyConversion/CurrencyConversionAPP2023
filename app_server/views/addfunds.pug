@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    article
+        .column
+            .row
+                h1 Add Money
+            .row 
+                .box
+                    h3 How much would you like to add?
+                    br
+                    form(action='/addfunds' method='post')
+                        select.form-select(aria-label='Currencies', name='currencies')
+                            each currency in currencies
+                                option(value=currency.currency, selected=(currency.currency === selectedCurrency)) #{currency.currency}
+                        input#amount.amount(type='number', name='amount', placeholder='Please Enter')
+                        br
+                        br
+                        .form-group
+                            input#cardholder_name.cardholder(type='text', name='cardholder_name', placeholder='Cardholder Name')
+                        .form-group
+                            input#card_number.card-number(type='text', name='card_number', placeholder='Card Number')
+                        .form-group
+                            input#expiration_date.expiration-date(type='text', name='expiration_date', placeholder='Expiration Date (MM/YY)')
+                        .form-group
+                            input#cvv.cvv(type='text', name='cvv', placeholder='CVV')
+                        br
+                        br
+                        .form-group
+                        input#Proceed.login(type='submit', value='Submit Payment')
+                    
+
+        footer.footer.bg-dark.text-light.text-center.py-3
+            | &copy; 2023 Currency Exchange 

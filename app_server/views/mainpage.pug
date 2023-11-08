@@ -16,13 +16,16 @@ block content
                         option(selected='USD') USD
                         option(value='EUR') EUR
                         option(value='GBP') GBP
-                    label.text-info.left $6,500
+                    label $6,500
                     br
                     br
                     .row
-                        button#Add.circle-button.btn.btn-info.btn-md(type='submit' value='Add') +
-                        button#Withdraw.circle-button.btn.btn-info.btn-md(type='submit') -
-                        button#Transfer.circle-button.btn.btn-info.btn-md(type='submit') -&gt;
+                        a(href='/addfunds')
+                            button#Add.circle-button.btn.btn-info.btn-md(formaction='/addfunds' type='submit' value='Add') +
+                        a(href='/withdraw')
+                            button#Withdraw.circle-button.btn.btn-info.btn-md(type='submit') -
+                        a(href='/addfunds')
+                            button#Transfer.circle-button.btn.btn-info.btn-md(type='submit') -&gt;
 
                 .box
                     h1 Conversion
