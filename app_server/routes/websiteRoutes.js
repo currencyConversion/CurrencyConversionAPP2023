@@ -16,5 +16,6 @@ router.post('/register', ctrlMain.addUsers);
 router.post('/login',ctrlMain.loginUser);
 router.post('/addfunds',ctrlMain.updateoraddBalance);
 router.post('/withdrawfunds',ctrlMain.Withdrawfunds);
+router.post('/convertcurrency',ctrlMain.convertCurrency);
 
 module.exports = router;

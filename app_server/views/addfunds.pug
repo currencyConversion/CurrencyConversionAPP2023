@@ -10,7 +10,7 @@ block content
                     h3 How much would you like to add?
                     br
                     form(action='/addfunds' method='post')
-                        select.form-select(aria-label='Currencies', name='currencies')
+                        select.form-select(aria-label='Currencies', name='currency')
                             each currency in currencies
                                 option(value=currency.currency, selected=(currency.currency === selectedCurrency)) #{currency.currency}
                         input#amount.amount(type='number', name='amount', placeholder='Please Enter')

@@ -2,11 +2,32 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define the user schema
-const userSchema = new mongoose.Schema({
-    username: String,
-    email: String,
-    password: String,
-    phone: String
+const customerSchema = new mongoose.Schema({
+    // Customer ID
+    username: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    password: {
+        // Needs encryption
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    accountcreation: {
+            type: Date,
+            'default': Date.now
+        },
+    status: {
+            type: Boolean
+    }
 });
 
 const currencySchema = new Schema({
@@ -18,7 +39,8 @@ const currencySchema = new Schema({
     }
 });
 
-const balanceSchema = new mongoose.Schema({
+const accountSchema = new mongoose.Schema({
+    customer_id: String,
     currency: String,
     balance: {
         type: mongoose.Schema.Types.Decimal128,
@@ -30,9 +52,22 @@ const balanceSchema = new mongoose.Schema({
     }
 });
 
+const transactionSchema = new mongoose.Schema({
+    // Account ID, Transaction ID
+    currency: String,
+    amount: {
+        type: mongoose.Schema.Types.Decimal128,
+        required: true
+    },
+    dateOfTransaction: {
+        type: Date,
+        'default': Date.now
+    }
+});
 
-const UserModel = mongoose.model('User', userSchema);
+
+const CustomerModel = mongoose.model('Customer', customerSchema);
 const CurrencyModel = mongoose.model('Currency', currencySchema);
-const BalanceModel = mongoose.model('Balance', balanceSchema);
+const AccountModel = mongoose.model('Account', accountSchema);
 
-module.exports = { UserModel, CurrencyModel, BalanceModel };
+module.exports = { CustomerModel, CurrencyModel, AccountModel };
