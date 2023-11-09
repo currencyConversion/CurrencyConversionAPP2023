@@ -5,7 +5,10 @@ const index = function(req, res){
 
 const mainpage = function(req, res) {
   const isLoggedIn = true;
-  res.render('mainpage', {   title: 'Mainpage', isLoggedIn})
+  const accounts = findAllAccounts(req.session.userId);
+  const currencies = findAllCurrencies();
+
+    res.render('mainpage', { title: 'Homepage', isLoggedIn, accounts, currencies });
 };
 
 const account = function(req, res) {
@@ -84,7 +87,12 @@ const addUsers = function (req, res) {
     .save()
     .then(() => {
       console.log('User registered successfully');
-      res.render('mainpage');
+      const accounts = findAllAccounts(req.session.userId);
+      const currencies = findAllCurrencies();
+      const isLoggedIn = true;
+      const username ="banana";
+
+      res.render('mainpage', { title: 'Homepage', isLoggedIn, username, accounts, currencies });
     })
     .catch((err) => {
       console.error('Error saving user:', err);
@@ -94,19 +102,24 @@ const addUsers = function (req, res) {
 
 const Decimal128 = require('mongodb').Decimal128;
 
+
+//login
+
+const findAllAccounts = async (userId) => {
+  try {
+    const accounts = await models.AccountModel.find({ customer_id: userId });
+    return accounts;
+  } catch (error) {
+    console.error('Error fetching accounts:', error);
+    return null;
+  }
+};
+
 const updateOrAddCurrencies = async function (req, res) {
   const currencies = [
     {
-      currency: 'USD',
-      rates: new Decimal128('1.00')
-    },
-    {
       currency: 'EUR',
-      rates: new Decimal128('0.93')
-    },
-    {
-      currency: 'GBP',
-      rates: new Decimal128('0.81')
+      rates: new Decimal128('1.00')
     }
   ];
 
@@ -135,25 +148,11 @@ const updateOrAddCurrencies = async function (req, res) {
   }
 };
 
-
-//login
-
-const findAllAccounts = async (userId) => {
-  try {
-    const accounts = await models.AccountModel.find({ customer_id: userId });
-    return accounts;
-  } catch (error) {
-    console.error('Error fetching accounts:', error);
-    return null;
-  }
-};
-
 const loginUser = async function (req, res) {
   const { username, password } = req.body;
   const isLoggedIn = true;
   const invalid = true;
 
-  updateOrAddCurrencies(req, res);
 
   try {
     const user = await models.CustomerModel.findOne({ username, password });
@@ -162,7 +161,7 @@ const loginUser = async function (req, res) {
       res.render('login', { title: 'login', invalid});
       return;
     }
-
+    req.session.userId = null;
     req.session.userId = user._id;
 
     const accounts = await findAllAccounts(req.session.userId);
@@ -225,7 +224,12 @@ const Withdrawfunds = async function (req, res) {
       // Currency already exists, update it
       foundCurrency.balance =  Number(foundCurrency.balance) - Number(decimalAmount);
       await foundCurrency.save();
-      res.render('mainpage', { title: 'mainpage' });
+      const accounts = await findAllAccounts(req.session.userId);
+      const currencies = await findAllCurrencies();
+      const isLoggedIn = true;
+      const username ="banana";
+
+      res.render('mainpage', { title: 'Homepage', isLoggedIn, username, accounts, currencies });
     }
   }
   catch (err) {
@@ -245,7 +249,7 @@ const convertCurrency = async function (req, res){
 
     if (FirstCurrency && Number(FirstCurrency.balance) >= Number(amount)) {
       let finalbalance;
-      if (Fromcurrency === "USD") {
+      if (Fromcurrency === "EUR") {
         const usdcon = await models.CurrencyModel.findOne({ currency: Tocurrency });
         finalbalance = Number(amount) * Number(usdcon.rates);
       } else {
@@ -292,7 +296,6 @@ module.exports = {
   loginUser,
   addfunds,
   updateoraddBalance,
-  updateOrAddCurrencies,
   Withdrawfunds,
   convertCurrency
 };
