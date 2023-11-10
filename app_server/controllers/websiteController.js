@@ -87,12 +87,8 @@ const addUsers = function (req, res) {
     .save()
     .then(() => {
       console.log('User registered successfully');
-      const accounts = findAllAccounts(req.session.userId);
-      const currencies = findAllCurrencies();
-      const isLoggedIn = true;
-      const username ="banana";
 
-      res.render('mainpage', { title: 'Homepage', isLoggedIn, username, accounts, currencies });
+      res.render('Login', { title: 'Login'});
     })
     .catch((err) => {
       console.error('Error saving user:', err);
@@ -197,8 +193,8 @@ const updateoraddBalance = async function (req, res) {
       await newBalance.save();
     }
 
-    const accounts = await findAllAccounts(req.session.userId);
     const currencies = await findAllCurrencies();
+    const accounts = await findAllAccounts(req.session.userId);
 
     console.log('Balance added or updated successfully');
     

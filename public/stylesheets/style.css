@@ -103,5 +103,10 @@ footer {
   }
 
 
+  article > footer.footer.bg-dark.text-light.text-center.py-3{
+	bottom: 0%;
+	margin-bottom: 0%;
+  }
+
 
 
