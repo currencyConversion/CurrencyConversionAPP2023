@@ -3,14 +3,40 @@ const mongoose = require('mongoose');
 // Click on Cluster0, then shell from the following menu. The String is in there.
 const dbURI = "mongodb+srv://currencyconversion2023:12345@currencyconverterprojec.hhtduxa.mongodb.net/?retryWrites=true&w=majority";
 try {
-   
-mongoose.connect(
-    dbURI,
-    { useNewUrlParser: true, useUnifiedTopology: true }).then(
-    () => {console.log(" Mongoose is connected")},
-	err=> {console.log(err)}
-	);
+
+
+    mongoose.connect(dbURI).then(
+        () => {
+            console.log("Mongoose is connected");
+        },
+        (err) => {
+            console.log(err);
+        }
+    );
 }
- catch (e) {
+
+
+catch (e) {
   console.log("could not connect");
 }
+
+
+
+
+
+
+
+
+
+
+async function connectDB() {
+    try {
+        await mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+        console.log("Mongoose is connected");
+    } catch (error) {
+        console.error("Error connecting to the database:", error.message);
+        throw error;
+    }
+}
+
+module.exports = { connectDB };
