@@ -24,6 +24,6 @@ steps:
 - script: |
     # Your Selenium test script (JavaScript)
     # This is a sample test checking if a view with a specific ID is displayed
-    node ./Tests/selenium-test.js
+    node Tests/selenium-tests.js
   displayName: 'Run Selenium Test'
 
