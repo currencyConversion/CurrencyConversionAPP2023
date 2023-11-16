@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+- Conor
 
 pool:
   vmImage: ubuntu-latest
@@ -12,10 +12,31 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    # You might need to adjust this version based on your project's compatibility
+    versionSpec: '10.x'  
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    echo "Checking Node.js version"
+    node --version
+    echo "Checking npm version"
+    npm --version
+
+    echo "Starting npm install with verbose logging"
+    npm install --verbose
+
+    echo "Listing contents of the current directory"
+    ls -la
+
+    echo "Running npm build script"
     npm run build
   displayName: 'npm install and build'
+
+  # This step is optional: add it if you want to see environment variables and additional system information
+- script: |
+    echo "Printing environment variables"
+    printenv
+
+    echo "Listing detailed contents of the current directory"
+    ls -laR
+  displayName: 'Additional Debugging Information'
