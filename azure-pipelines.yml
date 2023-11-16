@@ -1,21 +1,29 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
 
 trigger:
-- main
+- Conor
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
+- script: echo 'Starting Selenium test'
+  displayName: 'Starting Selenium'
+
+- task: UseNode@1
   inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+    versionSpec: '18.12.0'
+  displayName: 'Use Node.js'
+
+- script: npm install selenium-webdriver
+  displayName: 'Install Selenium WebDriver'
 
 - script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+    # Your Selenium test script (JavaScript)
+    # This is a sample test checking if a view with a specific ID is displayed
+    node ./Tests/selenium-test.js
+  displayName: 'Run Selenium Test'
+
