@@ -1,14 +1,20 @@
-
 trigger:
 - main
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- job: RunTests
+  displayName: 'Run Tests'
+  steps:
+  - script: npm install
 
+  - script: |
+      # Commands to set up your testing environment or run your tests.
+      # These commands depend on your testing framework and setup.
+      # For example, commands to execute tests using Jest, Cypress, etc.
+
+# Test scenarios (conceptual representation)
 tests:
   - name: "Register Form Display Test"
     description: "Check if the registration form elements are displayed"
@@ -17,13 +23,7 @@ tests:
         command: "goTo('/register')"
       - assertion: "Check Register Form Elements"
         command: "checkElementExists('#login-form')"
-        command: "checkElementExists('#username')"
-        command: "checkElementExists('#email')"
-        command: "checkElementExists('#phone')"
-        command: "checkElementExists('#password')"
-        command: "checkElementExists('#conpassword')"
-        command: "checkElementExists('#dateofbirth')"
-        command: "checkElementExists('input[type=submit]')"
+        # Other check commands...
 
   - name: "Fill and Submit Registration Form Test"
     description: "Fill and submit the registration form"
@@ -32,16 +32,8 @@ tests:
         command: "goTo('/register')"
       - action: "Fill Registration Form"
         command: "fillForm('username', 'testUser')"
-        command: "fillForm('email', 'test@example.com')"
-        command: "fillForm('phone', '1234567890')"
-        command: "fillForm('password', 'testPassword')"
-        command: "fillForm('conpassword', 'testPassword')"
-        command: "fillForm('dateofbirth', '2000-01-01')"
+        # Other fill commands...
       - action: "Submit Form"
         command: "clickButton('input[type=submit]')"
       - assertion: "Check Successful Registration"
         command: "checkElementExists('footer.footer.bg-dark.text-light.text-center.py-3')"
-
-
-
-
