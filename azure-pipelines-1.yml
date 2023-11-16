@@ -6,13 +6,9 @@ pool:
 
 steps:
 - script: echo Hello, world!
-
-
-
   displayName: 'Run Tests'
-  steps:
-  - job: RunTests
-  - script: |
+- job: RunTests
+- script: |
       npm install
 
 # Test scenarios (conceptual representation)
