@@ -12,8 +12,8 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    # You might need to adjust this version based on your project's compatibility
-    versionSpec: '10.x'  
+  
+    versionSpec: '20.0.1'  
   displayName: 'Install Node.js'
 
 - script: |
