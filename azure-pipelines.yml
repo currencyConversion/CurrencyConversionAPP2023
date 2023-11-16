@@ -15,11 +15,11 @@ steps:
 
 - task: UseNode@1
   inputs:
-    versionSpec: '@latest'
+    versionSpec: '20.0.1'
   displayName: 'Use Node.js'
 
-- script: npm install 
-  displayName: 'Install Selenium WebDriver'
+- script: npm install mocha --save-dev
+  displayName: 'Install Mocha WebDriver'
 
 - script: |
     # Your Selenium test script (JavaScript)
