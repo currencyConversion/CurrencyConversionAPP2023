@@ -15,15 +15,15 @@ steps:
 
 - task: UseNode@1
   inputs:
-    versionSpec: '16.x'
+    versionSpec: '@latest'
   displayName: 'Use Node.js'
 
-- script: npm install selenium-webdriver
+- script: npm install 
   displayName: 'Install Selenium WebDriver'
 
 - script: |
     # Your Selenium test script (JavaScript)
     # This is a sample test checking if a view with a specific ID is displayed
-    node Tests/selenium-tests.js
+    node Tests/app.test.js
   displayName: 'Run Selenium Test'
 
