@@ -12,7 +12,7 @@ steps:
       npm install
 
 # Test scenarios (conceptual representation)
-tests:
+  -tests:
   - name: "Register Form Display Test"
     description: "Check if the registration form elements are displayed"
     steps:
