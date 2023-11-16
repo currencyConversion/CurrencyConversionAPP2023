@@ -8,9 +8,10 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- job: RunTests
+
   displayName: 'Run Tests'
   steps:
+  - job: RunTests
   - script: |
       npm install
 
