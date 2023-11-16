@@ -9,13 +9,54 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-    npm install
-    ./node_modules/.bin/mocha
-  displayName: 'Run a multi-line script'
+tests:
+  - name: "Register Form Display Test"
+    description: "Check if the registration form elements are displayed"
+    steps:
+      - action: "Navigate to Registration Page"
+        command: "goTo('/register')"
+      - assertion: "Check Register Form Elements"
+        command: "checkElementExists('#login-form')"
+        command: "checkElementExists('#username')"
+        command: "checkElementExists('#email')"
+        command: "checkElementExists('#phone')"
+        command: "checkElementExists('#password')"
+        command: "checkElementExists('#conpassword')"
+        command: "checkElementExists('#dateofbirth')"
+        command: "checkElementExists('input[type=submit]')"
+
+  - name: "Fill and Submit Registration Form Test"
+    description: "Fill and submit the registration form"
+    steps:
+      - action: "Navigate to Registration Page"
+        command: "goTo('/register')"
+      - action: "Fill Registration Form"
+        command: "fillForm('username', 'testUser')"
+        command: "fillForm('email', 'test@example.com')"
+        command: "fillForm('phone', '1234567890')"
+        command: "fillForm('password', 'testPassword')"
+        command: "fillForm('conpassword', 'testPassword')"
+        command: "fillForm('dateofbirth', '2000-01-01')"
+      - action: "Submit Form"
+        command: "clickButton('input[type=submit]')"
+      - assertion: "Check Successful Registration"
+        command: "checkElementExists('footer.footer.bg-dark.text-light.text-center.py-3')"
+
+
+
+
