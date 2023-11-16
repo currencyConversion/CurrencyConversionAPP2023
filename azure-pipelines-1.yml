@@ -4,15 +4,15 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
 - job: RunTests
   displayName: 'Run Tests'
   steps:
-  - script: npm install
-
   - script: |
-      # Commands to set up your testing environment or run your tests.
-      # These commands depend on your testing framework and setup.
-      # For example, commands to execute tests using Jest, Cypress, etc.
+      npm install
 
 # Test scenarios (conceptual representation)
 tests:
