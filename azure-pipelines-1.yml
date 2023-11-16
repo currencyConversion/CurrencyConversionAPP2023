@@ -7,12 +7,14 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run Tests'
-- job: RunTests
+-
 - script: |
       npm install
 
+-job: RunTests
+
 # Test scenarios (conceptual representation)
-  -tests:
+  tests:
   - name: "Register Form Display Test"
     description: "Check if the registration form elements are displayed"
     steps:
