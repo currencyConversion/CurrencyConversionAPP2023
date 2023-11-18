@@ -290,12 +290,30 @@ const convertCurrency = async function (req, res){
         const firstnumber = Number(amount) / Number(cur.rates);
         finalbalance = firstnumber * Number(usdcon.rates);
       }
-    
-      if (LastCurrency) {
-      }
 
       const roundedFinalBalance = (finalbalance).toFixed(2); 
       const finalBalanceAsNumber = Number(roundedFinalBalance); 
+    
+
+      FirstCurrency.balance =  Number(FirstCurrency.balance) - Number(amount);
+
+      await FirstCurrency.save();
+
+      if (LastCurrency) {
+        LastCurrency.balance = Number(LastCurrency.balance) + Number(finalBalanceAsNumber);
+        await LastCurrency.save();
+      }
+      else{
+        
+        const newBalance = new models.AccountModel({
+          customer_id: req.session.userId,
+          currency: Tocurrency,
+          balance: finalBalanceAsNumber,
+          createdOn: Date.now(),
+        });
+  
+        await newBalance.save();
+      }
 
       const currencies = await findAllCurrencies();
       const accounts = await findAllAccounts(req.session.userId);
