@@ -69,31 +69,67 @@ const withdraw = async function(req, res) {
 //registration
 
 
+function isOver18(dob) {
+  const dobDate = new Date(dob);
+  const currentDate = new Date();
 
-const addUsers = function (req, res) {
-  const { username, email, password, phone } = req.body;
+  const age = currentDate.getFullYear() - dobDate.getFullYear();
 
-  const st = true;
-  const newUser = new models.CustomerModel({
-    username,
-    phone,
-    password,
-    email,
-    createdOn: Date.now(),
-    st
-  });
+  const hasBirthdayOccurred = (
+      currentDate.getMonth() > dobDate.getMonth() ||
+      (currentDate.getMonth() === dobDate.getMonth() && currentDate.getDate() >= dobDate.getDate())
+  );
 
-  newUser
-    .save()
-    .then(() => {
-      console.log('User registered successfully');
+  const adjustedAge = hasBirthdayOccurred ? age : age - 1;
 
-      res.render('Login', { title: 'Login'});
-    })
-    .catch((err) => {
-      console.error('Error saving user:', err);
-      res.status(500).json({ error: 'Failed to register user' });
-    });
+  return adjustedAge >= 18;
+}
+const addUsers = async function (req, res) {
+  const { username, email, password, phone, conpassword, dateofbirth} = req.body;
+
+  if(username === "" || email === "" || password === "" || phone === ""){
+    const err1 = "Some fields are empty";
+    res.render('register', { title: 'Register', err1 });
+  }
+  else {
+    if (password !== conpassword) {
+      const err1 = "Password is not the same";
+      res.render('register', {title: 'Register', err1});s
+    } else {
+      if (!isOver18(dateofbirth)) {
+        const err1 = "You need to be 18 to register";
+        res.render('register', {title: 'Register', err1});
+      } else {
+        const foundUser = await models.CustomerModel.findOne({ username: username });
+        if (foundUser) {
+          const err1 = "username already exists";
+          res.render('register', {title: 'Register', err1});
+        } else {
+          const st = true;
+          const newUser = new models.CustomerModel({
+            username,
+            phone,
+            password,
+            email,
+            createdOn: Date.now(),
+            st
+          });
+
+          newUser
+              .save()
+              .then(() => {
+                console.log('User registered successfully');
+
+                res.render('Login', {title: 'Login'});
+              })
+              .catch((err) => {
+                console.error('Error saving user:', err);
+                res.status(500).json({error: 'Failed to register user'});
+              });
+        }
+      }
+    }
+  }
 };
 
 const Decimal128 = require('mongodb').Decimal128;
@@ -254,12 +290,30 @@ const convertCurrency = async function (req, res){
         const firstnumber = Number(amount) / Number(cur.rates);
         finalbalance = firstnumber * Number(usdcon.rates);
       }
-    
-      if (LastCurrency) {
-      }
 
       const roundedFinalBalance = (finalbalance).toFixed(2); 
       const finalBalanceAsNumber = Number(roundedFinalBalance); 
+    
+
+      FirstCurrency.balance =  Number(FirstCurrency.balance) - Number(amount);
+
+      await FirstCurrency.save();
+
+      if (LastCurrency) {
+        LastCurrency.balance = Number(LastCurrency.balance) + Number(finalBalanceAsNumber);
+        await LastCurrency.save();
+      }
+      else{
+        
+        const newBalance = new models.AccountModel({
+          customer_id: req.session.userId,
+          currency: Tocurrency,
+          balance: finalBalanceAsNumber,
+          createdOn: Date.now(),
+        });
+  
+        await newBalance.save();
+      }
 
       const currencies = await findAllCurrencies();
       const accounts = await findAllAccounts(req.session.userId);
