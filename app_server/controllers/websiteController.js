@@ -120,7 +120,7 @@ const addUsers = async function (req, res) {
               .then(() => {
                 console.log('User registered successfully');
 
-                res.render('Login', {title: 'Login'});
+                res.render('login', {title: 'Login'});
               })
               .catch((err) => {
                 console.error('Error saving user:', err);

@@ -19,7 +19,7 @@ describe('Login Form Tests', function () {
 
     it('should submit the login form with valid credentials', async function () {
         // Navigate to the login page
-        await driver.get('http://localhost:3000/login');
+        await driver.get('https://currencyconversion-t4nt.onrender.com/login');
 
         // Find elements by CSS selectors
         const usernameInput = await driver.findElement(By.css('#username'));
@@ -37,7 +37,7 @@ describe('Login Form Tests', function () {
 
     it('should display "Invalid details" for invalid credentials', async function () {
         // Navigate to the login page
-        await driver.get('http://localhost:3000/login');
+        await driver.get('https://currencyconversion-t4nt.onrender.com/login');
 
         // Find elements by CSS selectors
         const usernameInput = await driver.findElement(By.css('#username'));
@@ -78,7 +78,7 @@ describe('Register Form Tests', function () {
 
     it('should submit the registration form with valid details', async function () {
         // Navigate to the registration page
-        await driver.get('http://localhost:3000/register');
+        await driver.get('https://currencyconversion-t4nt.onrender.com/register');
 
         // Find elements by CSS selectors
         const usernameInput = await driver.findElement(By.css('#username'));
@@ -130,7 +130,7 @@ describe('Database and Controller Integration Tests', function () {
         }
 
         // Navigate to a page where the balance update or addition is triggered
-        await driver.get('http://localhost:3000/addfunds');
+        await driver.get('https://currencyconversion-t4nt.onrender.com/addfunds');
 
         // Mock the request and response objects
         const mockUserId = 'mockUserId';
