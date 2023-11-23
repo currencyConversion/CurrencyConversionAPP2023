@@ -38,7 +38,7 @@ describe('Login Screen Tests', () => {
     });
 
     it('should display an input field for username', async () => {
-        await page.goto('http://localhost:3000/login');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/login');
 
         const usernameInput = await page.$('input[name="username"]');
         expect(usernameInput).to.exist;
@@ -49,7 +49,7 @@ describe('Login Screen Tests', () => {
     });
 
     it('should display an input field for password', async () => {
-        await page.goto('http://localhost:3000/login');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/login');
         const passwordInput = await page.$('input[name="password"]');
         expect(passwordInput).to.exist;
 
@@ -73,42 +73,42 @@ describe('Register Screen Tests', () => {
     });
 
     it('should display an input field for username', async () => {
-        await page.goto('http://localhost:3000/register');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/register');
         const usernameInput = await page.$('input[name="username"]');
         expect(usernameInput).to.exist;
 
     });
 
     it('should display an input field for password', async () => {
-        await page.goto('http://localhost:3000/register');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/register');
         const passwordInput = await page.$('input[name="password"]');
         expect(passwordInput).to.exist;
 
     });
 
     it('should display an input field for phone', async () => {
-        await page.goto('http://localhost:3000/register');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/register');
         const phoneInput = await page.$('input[name="phone"]');
         expect(phoneInput).to.exist;
 
     });
 
     it('should display an input field for email', async () => {
-        await page.goto('http://localhost:3000/register');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/register');
         const emailInput = await page.$('input[name="email"]');
         expect(emailInput).to.exist;
 
     });
 
     it('should display an input field for date of birth', async () => {
-        await page.goto('http://localhost:3000/register');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/register');
         const dobInput = await page.$('input[name="dateofbirth"]');
         expect(dobInput).to.exist;
 
     });
 
     it('should display an input field for confirm password', async () => {
-        await page.goto('http://localhost:3000/register');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/register');
         const confirmInput = await page.$('input[name="conpassword"]');
         expect(confirmInput).to.exist;
 
@@ -131,14 +131,14 @@ describe('Mainpage Screen Tests', () => {
     });
 
     it('should display an input field for username', async () => {
-        await page.goto('http://localhost:3000/mainpage');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/mainpage');
         const AmountInput = await page.$('input[name="amount"]');
         expect(AmountInput).to.exist;
 
     });
 
     it('should display an input field for password', async () => {
-        await page.goto('http://localhost:3000/mainpage');
+        await page.goto('https://currencyconversion-t4nt.onrender.com/mainpage');
         const recieveInput = await page.$('input[name="receive"]');
         expect(recieveInput).to.exist;
 
